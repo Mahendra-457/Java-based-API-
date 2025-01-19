@@ -1,15 +1,15 @@
-# Step 1: Use a suitable base image
+# Use a lightweight Java runtime as the base image
 FROM openjdk:17-jdk-slim
 
-# Step 2: Set the working directory inside the container
+# Set the working directory inside the container
 WORKDIR /app
 
-# Step 3: Copy the application JAR file into the container
-COPY your-application.jar /app/your-application.jar
+# Copy the built application JAR file into the container
+COPY ./target/*.jar /app/application.jar
 
-# Step 4: Expose the application port (optional, replace with your API's port)
+# Expose the application port (replace with your actual API's port if different)
 EXPOSE 8080
 
-# Step 5: Define the entry point to run the application
-CMD ["java", "-jar", "/app/your-application.jar"]
+# Define the entry point to run the application
+CMD ["java", "-jar", "/app/application.jar"]
 
